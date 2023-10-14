@@ -144,6 +144,21 @@ const matrixGenerator = (cardValues, size = 4) => {
     });
 };
 
+//Start game
+startButton.addEventListener("click", () => {
+    movesCount = 0;
+    time = 0;
+    //controls and buttons visibility
+    controls.classList.add("hide");
+    stopButton.classList.remove("hide");
+    startButton.classList.add("hide");
+    //Start timer
+    interval = setInterval(timeGenerator, 1000);
+    //initial moves
+    moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+    initializer();
+})
+
 //Initialize value and func call
 const initializer = () => {
     result.innerText = "";
