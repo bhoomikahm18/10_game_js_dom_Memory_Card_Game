@@ -159,6 +159,15 @@ startButton.addEventListener("click", () => {
     initializer();
 })
 
+//Stop game
+stopButton.addEventListener("click", (stopGame = () => {
+    controls.classList.remove("hide");
+    stopButton.classList.add("hide");
+    startButton.classList.remove("hide");
+    clearInterval(interval);
+})
+);
+
 //Initialize value and func call
 const initializer = () => {
     result.innerText = "";
@@ -167,5 +176,3 @@ const initializer = () => {
     console.log(cardValues);
     matrixGenerator(cardValues);
 };
-
-initializer();
