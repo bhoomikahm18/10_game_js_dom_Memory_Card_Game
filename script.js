@@ -15,7 +15,7 @@ const items = [
     { name: "bee", image: "bee.png" },
     { name: "crocodile", image: "crocodile.png" },
     { name: "macaw", image: "macaw.png" },
-    { name: "gorilla", image: "gorilla.png" },
+    { name: "gorilla", image: "gorila.png" },
     { name: "tiger", image: "tiger.png" },
     { name: "monkey", image: "monkey.png" },
     { name: "chameleon", image: "chameleon.png" },
@@ -27,8 +27,9 @@ const items = [
 ];
 
 //Initial Time
-let secomds = 0,
+let seconds = 0,
     minutes = 0;
+
 //Initial moves and win count
 let movesCount = 0,
     winCount = 0;
@@ -47,11 +48,11 @@ const timeGenerator = () => {
     timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
 };
 
-//for calculating moves
+//For calculating moves
 const movesCounter = () => {
     movesCount += 1;
     moves.innerHTML = `<span>Moves:</span>${movesCount}`;
-}
+};
 
 //Pick random objects from the items array
 const generateRandom = (size = 4) => {
@@ -84,12 +85,12 @@ const matrixGenerator = (cardValues, size = 4) => {
             data-card-values is a custom attribute which stores the names of the cards to match later
           */
         gameContainer.innerHTML += `
-       <div class="card-container" data-card-value="${cardValues[i].name}">
-          <div class="card-before">?</div>
-          <div class="card-after">
-          <img src="${cardValues[i].image}" class="image"/></div>
-       </div>
-       `;
+     <div class="card-container" data-card-value="${cardValues[i].name}">
+        <div class="card-before">?</div>
+        <div class="card-after">
+        <img src="${cardValues[i].image}" class="image"/></div>
+     </div>
+     `;
     }
     //Grid
     gameContainer.style.gridTemplateColumns = `repeat(${size},auto)`;
@@ -124,7 +125,7 @@ const matrixGenerator = (cardValues, size = 4) => {
                         //check if winCount ==half of cardValues
                         if (winCount == Math.floor(cardValues.length / 2)) {
                             result.innerHTML = `<h2>You Won</h2>
-              <h4>Moves: ${movesCount}</h4>`;
+                                                <h4>Moves: ${movesCount}</h4>`;
                             stopGame();
                         }
                     } else {
@@ -143,12 +144,12 @@ const matrixGenerator = (cardValues, size = 4) => {
         });
     });
 };
-
 //Start game
 startButton.addEventListener("click", () => {
     movesCount = 0;
-    time = 0;
-    //controls and buttons visibility
+    seconds = 0;
+    minutes = 0;
+    //controls amd buttons visibility
     controls.classList.add("hide");
     stopButton.classList.remove("hide");
     startButton.classList.add("hide");
@@ -157,15 +158,17 @@ startButton.addEventListener("click", () => {
     //initial moves
     moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
     initializer();
-})
+});
 
 //Stop game
-stopButton.addEventListener("click", (stopGame = () => {
-    controls.classList.remove("hide");
-    stopButton.classList.add("hide");
-    startButton.classList.remove("hide");
-    clearInterval(interval);
-})
+stopButton.addEventListener(
+    "click",
+    (stopGame = () => {
+        controls.classList.remove("hide");
+        stopButton.classList.add("hide");
+        startButton.classList.remove("hide");
+        clearInterval(interval);
+    })
 );
 
 //Initialize value and func call
