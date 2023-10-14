@@ -15,7 +15,7 @@ const items = [
     { name: "bee", image: "bee.png" },
     { name: "crocodile", image: "crocodile.png" },
     { name: "macaw", image: "macaw.png" },
-    { name: "gorilla", image: "gorila.png" },
+    { name: "gorilla", image: "gorilla.png" },
     { name: "tiger", image: "tiger.png" },
     { name: "monkey", image: "monkey.png" },
     { name: "chameleon", image: "chameleon.png" },
@@ -144,6 +144,7 @@ const matrixGenerator = (cardValues, size = 4) => {
         });
     });
 };
+
 //Start game
 startButton.addEventListener("click", () => {
     movesCount = 0;
@@ -171,7 +172,7 @@ stopButton.addEventListener(
     })
 );
 
-//Initialize value and func call
+//Initialize values and func calls
 const initializer = () => {
     result.innerText = "";
     winCount = 0;
